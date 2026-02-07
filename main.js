@@ -31,3 +31,28 @@ contactForm.addEventListener("submit", async function (e) {
         formSuccess.style.display = "none";
     }
 });
+class Order {
+  constructor(orderId, customerName, tableNumber) {
+    this.orderId = orderId;
+    this.customerName = customerName;
+    this.tableNumber = tableNumber;
+    this.items = [];
+    this.totalPrice = 0;
+    this.orderStatus = "Pending";
+    this.orderTime = new Date().toLocaleTimeString();
+    this.paymentMethod = "";
+  }
+
+  addItem(itemName, price) {
+    this.items.push({ itemName, price });
+    this.totalPrice += price;
+  }
+
+  setPayment(method) {
+    this.paymentMethod = method;
+  }
+
+  completeOrder() {
+    this.orderStatus = "Completed";
+  }
+}
